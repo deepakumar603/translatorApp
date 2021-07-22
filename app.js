@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 
 app.post('/convert', cors(), (request, response) => {
   let body = request.body;
-  console.log("request body ====> "+JSON.stringify(body));
-  translatte(body.text, {to: body.convertTo}).then(res => {
+  console.log("request body ====> " + JSON.stringify(body));
+  translatte(body.text, { to: body.convertTo }).then(res => {
     console.log(JSON.stringify(res));
     response.json(res);
   }).catch(err => {
@@ -28,6 +28,13 @@ app.post('/convert', cors(), (request, response) => {
   // }).catch(err => {
   //     console.error(err);
   // });
+})
+
+app.get('/check', cors(), (request, response) => {
+  response.write("Application is working fine ", 'utf8', () => {
+    console.log("Writing string Data...");
+  });
+  response.end();
 })
 
 const port = 3000;
